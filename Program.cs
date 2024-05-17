@@ -47,3 +47,69 @@ do
         Console.WriteLine("Usted no ingreso un numero.");
     }
 }while (continuar);
+
+/*
+Ejercicio 2. Ingrese al branch CalculadoraV1 y construya un programa que sea una
+calculadora que permita al usuario realizar las 4 operaciones básicas (Sumar, Restar,
+Multiplicar y Dividir) a partir de un menú para seleccionar la opción a elegir y que luego
+pida dos números y que devuelva el resultado de la operación seleccionada. Además
+una vez que termine de realizar la operación le pregunte si desea realizar otro cálculo.
+*/
+
+int option = 0;
+int resultado= 0;
+int num1,num2;
+bool success,successA,successB;
+do
+{
+    Console.WriteLine("----------CALCULADORA 1 ----------");
+    Console.WriteLine("1- Suma");
+    Console.WriteLine("2- Resta");
+    Console.WriteLine("3- Multiplicacion");
+    Console.WriteLine("4- Division");
+    Console.WriteLine("5-Salir");
+    success = int.TryParse(Console.ReadLine(), out option);
+
+    if(success){
+        Console.WriteLine("Ingrese el numero 1:");
+        successA = int.TryParse(Console.ReadLine(), out num1);
+        Console.WriteLine("Ingrese el numero 2:");
+        successB = int.TryParse(Console.ReadLine(), out num2);
+        if( successA && successB){
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine("Eligio la suma.");
+                    resultado = num1 + num2;
+                    break;
+                case 2:
+                    Console.WriteLine("Eligio la resta.");
+                    resultado = num1 - num2;
+                    break;
+                case 3:
+                    Console.WriteLine("Eligio la multiplicacion.");
+                    resultado = num1 * num2;
+                    break;
+                case 4:
+                    Console.WriteLine("Eligio la division (entre enteros).");
+                    if(b == 0){
+                        resultado = num1/num2;
+                    }else{
+                        Console.WriteLine("No e puede dividir por 0.");
+                    }
+                    break;
+                case 5:
+                    Console.WriteLine("Saliendo... FIN.");
+                    break;
+                default:
+                    Console.WriteLine("Caso default.");
+                    break;
+            }
+            Console.WriteLine("Resultado: "+ resultado);
+      }else{
+        Console.WriteLine("No ingreso numeros validos para operar.");
+      }
+    }else{
+        Console.WriteLine("Opcion ingresada no valida.");
+    }
+} while (option!=5);
